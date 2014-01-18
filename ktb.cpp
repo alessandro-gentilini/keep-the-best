@@ -4,9 +4,18 @@
 #include <set>
 #include <algorithm>
 
-bool cmp(const std::string &a, const std::string &b)
+size_t number_of_distinct_chars(std::string s)
 {
-	return a.size() < b.size();
+	return std::distance(s.begin(), std::unique(s.begin(),s.end()));
+}
+
+bool entropy(const std::string& a, const std::string& b)
+{
+	bool r = a.length() < b.length();
+	if ( a.length() == b.length() ) {
+		r = number_of_distinct_chars(a) < number_of_distinct_chars(b);
+	} 
+	return r;
 }
 
 int main(int, char**)
@@ -32,10 +41,14 @@ int main(int, char**)
 			for ( auto it = bounds.first; it != bounds.second; ++it ) {
 				names.push_back(it->second);
 			}
-			names.erase(std::max_element(names.begin(),names.end(),cmp));
+			auto it = std::max_element(names.begin(),names.end(),entropy);
+			std::string the_best = *it;
+			names.erase(it);
+			std::cout << "keep\t" << the_best << "\n";
 			for ( auto n : names ) {
-				std::cout << "rm " << n << "\n";
+				std::cout << "\trm\t" << n << "\n";
 			}
+			std::cout << "\n";
 		}
 	}
 
