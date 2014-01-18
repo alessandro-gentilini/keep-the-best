@@ -1,3 +1,5 @@
+#include <libgen.h>
+
 #include <iostream>
 #include <string>
 #include <map>
@@ -11,9 +13,11 @@ size_t number_of_distinct_chars(std::string s)
 
 bool entropy(const std::string& a, const std::string& b)
 {
-	bool r = a.length() < b.length();
-	if ( a.length() == b.length() ) {
-		r = number_of_distinct_chars(a) < number_of_distinct_chars(b);
+	std::string base_a( basename( const_cast<char*>(a.c_str()) ) );
+	std::string base_b( basename( const_cast<char*>(b.c_str()) ) );
+	bool r = base_a.length() < base_b.length();
+	if ( base_a.length() == base_b.length() ) {
+		r = number_of_distinct_chars(base_a) < number_of_distinct_chars(base_b);
 	} 
 	return r;
 }
