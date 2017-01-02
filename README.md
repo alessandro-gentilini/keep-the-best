@@ -24,4 +24,10 @@ A simple dedup
    Alessandro Gentilini, January 2014.
    
    https://github.com/alessandro-gentilini/keep-the-best
+   
+
+To install `md5deep`
+====================
+`sudo apt-get install md5deep`
+
 
