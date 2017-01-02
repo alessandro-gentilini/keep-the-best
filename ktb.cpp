@@ -60,7 +60,7 @@ std::string help(const char* myself)
    oss << "\nDESCRIPTION\n";
    oss << "   hashes.txt  is the output of an md5deep command\n";
    oss << "   folder      is the folder where to move the duplicate files\n";
-   oss << "   output_type windows for a batch file, anything else for a basch script\n";
+   oss << "   output_type windows for a batch file, anything else for a bash script\n";
    oss << "\nEXAMPLE\n";
    oss << "   The bash script dedup.sh moves all the duplicates found in /home/alex/pdf\n";
    oss << "   (and all its subdir) to /home/alex/dup/\n\n";
